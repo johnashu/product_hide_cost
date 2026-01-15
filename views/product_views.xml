@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Hide cost price on product.template form -->
+    <record id="product_template_form_view_hide_cost" model="ir.ui.view">
+        <field name="name">product.template.form.hide.cost</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <!-- Add groups attribute to label -->
+            <xpath expr="//label[@for='standard_price']" position="attributes">
+                <attribute name="groups">purchase.group_purchase_user,account.group_account_user</attribute>
+            </xpath>
+            <!-- Add groups attribute to the cost price container div -->
+            <xpath expr="//div[@name='standard_price_uom']" position="attributes">
+                <attribute name="groups">purchase.group_purchase_user,account.group_account_user</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Hide cost price on product.product form -->
+    <record id="product_product_form_view_hide_cost" model="ir.ui.view">
+        <field name="name">product.product.form.hide.cost</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <!-- Add groups attribute to label -->
+            <xpath expr="//label[@for='standard_price']" position="attributes">
+                <attribute name="groups">purchase.group_purchase_user,account.group_account_user</attribute>
+            </xpath>
+            <!-- Add groups attribute to the cost price container div -->
+            <xpath expr="//div[@name='standard_price_uom']" position="attributes">
+                <attribute name="groups">purchase.group_purchase_user,account.group_account_user</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
